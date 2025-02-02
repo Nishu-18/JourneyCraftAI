@@ -14,6 +14,7 @@ python app.py
 open new terminal
 
 npm i
+
 node server/index.js
 
 
