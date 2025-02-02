@@ -19,6 +19,6 @@ node server/index.js
 
 
 ***
-open ne ternimal
+open new ternimal
 
 npm run dev
