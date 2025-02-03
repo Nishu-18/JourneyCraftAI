@@ -18,14 +18,6 @@ export const home_cards = [
     },
     {
         id: 3,
-        title: 'Update Itinerary',
-        description: 'Quickly edit or rearrange your trip schedule as needed.',
-        icon: '📝',
-        link_text: 'Edit',
-        link_path: '/history'
-    },
-    {
-        id: 4,
         title: 'Create Itinerary',
         description: 'Get a personalized travel plan instantly with AI.',
         icon: '✈️',

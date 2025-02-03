@@ -12,4 +12,4 @@ const config = {
     }
 }
 
-export const getPlaceDetails = (data)=> axios.post(import.meta.env.VITE_GOOGLE_PLACE_TEXT_URL, data, config)
+export const getPlaceDetails = (data) => axios.post(import.meta.env.VITE_GOOGLE_PLACE_TEXT_URL, data, config)

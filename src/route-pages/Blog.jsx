@@ -25,7 +25,7 @@ function Blog() {
       {/* Section 2: Features */}
       <div className='pb-8 border-b-4 border-neutral-300'>
         <p className='font-bold text-xl mb-2 mt-8'>What You'll Find Here:</p>
-        
+
         <p>🗺 <span className='opacity-75'>Travel Planning Tips & Tricks - Get expert advice on crafting the perfect itinerary with ease.</span></p>
         <p>🤖 <span className='opacity-75'>AI-Powered Travel Innovation - Explore how AI is transforming the way we plan trips.</span></p>
         <p>🌍 <span className='opacity-75'>Destination Spotlights - Discover hidden gems, must-visit attractions, and curated travel experiences.</span></p>
@@ -50,25 +50,24 @@ function Blog() {
         <p className='opacity-75 mb-3'>This project was built as part of <span className='font-extrabold'>VoyageHack 2.0</span>, organized by <span className='font-extrabold'>TBO.com</span>. We appreciate their support and the opportunity to innovate in the travel tech space.</p>
         <div>
           <span className='mr-1'>🔗 Source Code:</span>
-          <Link to='' target='_blank'>https://gsdfwsf wbbhcfiosgfsiocgisgfosdigflxfvlskbcsdbc</Link>
+          <Link to='https://github.com/Nishu-18/JourneyCraftAI' target='_blank' className='opacity-75'>https://github.com/Nishu-18/JourneyCraftAI</Link>
         </div>
       </div>
 
       {/* Section 5: Developer Information */}
       <p className='font-bold text-xl mb-4 mt-8'>Developers Behind JourneyCraft AI</p>
-
-      {/* Replace bracketed placeholders with actual developer info */}
       <div className='flex justify-start gap-24'>
+
         <div>
-          <p>👨‍💻 [Your Name]</p>
-          <p>🔗 GitHub: [Your GitHub ID]</p>
-          <p>📧 Email: [Your Email]</p>
+          <p>👨‍💻 Nishchal Bhardwaj</p>
+          <p>🔗 GitHub: <Link to='https://github.com/Nishu-18' target='_blank' className='opacity-75'>https://github.com/Nishu-18</Link></p>
+          <p>📧 Email: <span className='opacity-75'>nishchalbhardwaj2004@gmail.com</span></p>
         </div>
 
         <div>
-          <p>👨‍💻 [Your Name]</p>
-          <p>🔗 GitHub: [Your GitHub ID]</p>
-          <p>📧 Email: [Your Email]</p>
+          <p>👨‍💻 Akshat Garg</p>
+          <p>🔗 GitHub: <Link to='https://github.com/Akshat7garg' target='_blank' className='opacity-75'>https://github.com/Akshat7garg</Link></p>
+          <p>📧 Email: <span className='opacity-75'>akshat7garg@gmail.com</span></p>
         </div>
       </div>
     </div>

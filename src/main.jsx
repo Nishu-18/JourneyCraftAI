@@ -7,17 +7,14 @@ import Header from './components/custom/Header'
 import Home from './route-pages/Home'
 import Preview from './destination-preview/Preview'
 import Chatroom from './route-pages/Chatroom'
-import Edit from './route-pages/Edit'
 import Preference from './route-pages/Preference'
 import Assistant from './components/custom/Assistant'
-import Dashboard from './route-pages/Dashboard'
 import Archive from './route-pages/Archive'
-import Booking from './route-pages/Booking'
 import Blog from './route-pages/Blog'
 import { Toaster } from "@/components/ui/sonner"
 import Trip_detail from './view-trip/[tripId]/Trip_detail'
-import Hotels from './components/Recommendations/Hotels'
-import Flight from './components/Recommendations/Flight'
+import HotelList from './components/Recommendations/HotelList'
+import FlightList from './components/Recommendations/FlightList'
 
 
 const router = createBrowserRouter([
@@ -49,15 +46,6 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/edit-itinerary',
-    element: (
-      <>
-        <Header />
-        <Edit />
-      </>
-    ),
-  },
-  {
     path: '/user-preference',
     element: (
       <>
@@ -67,29 +55,11 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/trip-dashboard',
-    element: (
-      <>
-        <Header />
-        <Dashboard />
-      </>
-    ),
-  },
-  {
     path: '/archives',
     element: (
       <>
         <Header />
         <Archive />
-      </>
-    ),
-  },
-  {
-    path: '/booking',
-    element: (
-      <>
-        <Header />
-        <Booking />
       </>
     ),
   },
@@ -116,7 +86,7 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <Hotels />
+        <HotelList />
       </>
     ),
   },
@@ -125,11 +95,13 @@ const router = createBrowserRouter([
     element: (
       <>
         <Header />
-        <Flight />
+        <FlightList />
       </>
     ),
   },
 ]);
+
+
 
 createRoot(document.getElementById('root')).render(
   // <StrictMode>

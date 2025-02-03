@@ -3,7 +3,7 @@ import { googleLogout, useGoogleLogin } from '@react-oauth/google'
 import axios from 'axios'
 import { FaPaperPlane } from "react-icons/fa6"
 import { FiBell } from "react-icons/fi"
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { FcGoogle } from "react-icons/fc"
 import { CiLogout } from "react-icons/ci"
 import {
@@ -105,7 +105,6 @@ function Header() {
             {/* Navigation links */}
             <div className='flex h-full items-center gap-2 text-white'>
                 <NavLink to='/' className={(e) => { return e.isActive ? 'active' : 'h-link' }}>Home</NavLink>
-                <NavLink to='/trip-dashboard' className={(e) => { return e.isActive ? 'active' : 'h-link' }}>DashBoard</NavLink>
                 <NavLink to='/blog' className={(e) => { return e.isActive ? 'active' : 'h-link' }}>Blog</NavLink>
                 <NavLink to='/archives' className={(e) => { return e.isActive ? 'active' : 'h-link' }}>Archives</NavLink>
 
@@ -125,9 +124,9 @@ function Header() {
                         <div className='flex items-center gap-4 h-full'>
 
                             {/* For notifications */}
-                            <button className='cursor-pointer border-[3px] border-green-700 bg-green-50 text-green-700 text-xl h-10 w-10 rounded-full flex justify-center items-center hover:bg-green-700 hover:text-white transition-all duration-200'>
+                            <Link to='/collaboration' className='cursor-pointer border-[3px] border-green-700 bg-green-50 text-green-700 text-xl h-10 w-10 rounded-full flex justify-center items-center hover:bg-green-700 hover:text-white transition-all duration-200'>
                                 <FiBell />
-                            </button>
+                            </Link>
 
                             {/* user's profile */}
                             <Popover>

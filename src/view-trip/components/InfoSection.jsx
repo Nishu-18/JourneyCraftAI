@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { getPlaceDetails } from '@/GlobalAPI';
-import { useNavigate } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { db } from '../../database/dbconfig';
+import { db } from '@/database/dbconfig';
 import {
     AlertDialog,
     AlertDialogAction,
@@ -15,14 +14,13 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function InfoSection({ trip_data }) {
 
-    const cost = Number(trip_data?.tripData?.tripSummary?.overallCost?.meals) + Number(trip_data?.tripData?.tripSummary?.overallCost?.activities) + Number(trip_data?.tripData?.tripSummary?.overallCost?.transport);
+    const nav = useNavigate();
 
     const [photo, setPhoto] = useState();
-
     useEffect(() => {
         trip_data && getPlacePhoto() && checkActive();
     }, [trip_data]);
@@ -41,12 +39,7 @@ function InfoSection({ trip_data }) {
 
     const user = JSON.parse(localStorage.getItem('user'));
 
-    const trip_route = useNavigate();
     const [active, setActive] = useState(false);
-
-    // useEffect(() => {
-    //     c;
-    // }, [active])
 
     const checkActive = async () => {
         const docRef = doc(db, "ActiveTrips", user?.email);
@@ -62,7 +55,7 @@ function InfoSection({ trip_data }) {
 
     const [loader, setLoader] = useState(false);
 
-    const solo = async ()=> {
+    const solo = async () => {
         setLoader(true);
         await setDoc(doc(db, "ActiveTrips", trip_data?.userEmail), {
             tripData: trip_data?.tripData,
@@ -71,12 +64,12 @@ function InfoSection({ trip_data }) {
             id: trip_data?.id,
         });
         setLoader(false);
-        const group = {member: user?.name, type: ''}
+        const group = { member: user?.name, type: '' }
         localStorage.setItem('group', JSON.stringify(group));
-        trip_route('/trip-dashboard');
+        nav('/');
     }
 
-    const group = async ()=> {
+    const group = async () => {
         setLoader(true);
         const groupId = `${trip_data?.tripData?.tripSummary?.startDate}, ${trip_data?.tripData?.tripSummary?.destination}`;
 
@@ -100,27 +93,29 @@ function InfoSection({ trip_data }) {
             id: trip_data?.id,
         });
         setLoader(false);
-        const group = {member: user?.name, type: groupId}
+        const group = { member: user?.name, type: groupId }
         localStorage.setItem('group', JSON.stringify(group))
-        trip_route('/trip-dashboard');
+        nav('/');
     }
 
     return (
         <div className='font-baloo mb-8'>
-            <img
-                src={(photo) ? photo : '/sample.jpg'}
-                className='h-[340px] w-full object-cover rounded-xl'
-            />
+            <div className='flex gap-4 justify-start items-center'>
+                <img
+                    src={(photo) ? photo : '/sample.jpg'}
+                    className='h-[340px] object-cover rounded-xl'
+                />
+                <p className='text-3xl font-bold'>🛩️ {trip_data?.tripData?.tripSummary?.destination}</p>
+            </div>
 
             <div className='flex items-center justify-between'>
                 <div className='my-5 flex flex-col gap-4'>
-                    <p className='text-3xl font-bold'>{trip_data?.tripData?.tripSummary?.destination}</p>
                     <div className='flex gap-5'>
                         <p className='py-1 px-3 bg-neutral-200 rounded-full text-neutral-600 border border-neutral-900'>🗓️ Starting Date: {trip_data?.tripData?.tripSummary?.startDate}</p>
                         <p className='py-1 px-3 bg-neutral-200 rounded-full text-neutral-600 border border-neutral-900'>🗓️ Ending Date: {trip_data?.tripData?.tripSummary?.endDate}</p>
 
                         <p className='py-1 px-3 bg-neutral-200 rounded-full text-neutral-600 border border-neutral-900'>
-                            💰 Estimated Cost: {trip_data?.tripData?.tripSummary?.currency} {cost}
+                            💰 Estimated Cost: {trip_data?.tripData?.tripSummary?.currency} {trip_data?.tripData?.tripSummary?.totalCost}
                         </p>
                     </div>
                 </div>
@@ -146,7 +141,7 @@ function InfoSection({ trip_data }) {
                                     <AlertDialogHeader className='font-baloo'>
                                         <AlertDialogTitle>Join a Group and Travel Together!</AlertDialogTitle>
                                         <AlertDialogDescription className='text-neutral-900 text-[16px]'>
-                                        Make trip planning more fun! Join an existing group or create a new one to plan with fellow travelers.
+                                            Make trip planning more fun! Join an existing group or create a new one to plan with fellow travelers.
                                         </AlertDialogDescription>
                                     </AlertDialogHeader>
 

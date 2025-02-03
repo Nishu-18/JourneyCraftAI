@@ -13,6 +13,9 @@ import { FcGoogle } from 'react-icons/fc'
 import { Loader2 } from 'lucide-react'
 import { FaPaperPlane } from 'react-icons/fa6'
 
+
+
+
 function OathCheck({ page }) {
 
     const [loading, setLoading] = useState(false);
@@ -52,7 +55,6 @@ function OathCheck({ page }) {
                 To access this <span className='font-bold'>{page}</span> feature, you first have to sign in with your Google account.
             </div>
 
-
             <Dialog>
                 <DialogTrigger className='cursor-pointer py-2 px-4 rounded-xl font-medium font-baloo hover:text-green-200 transition-all duration-300 bg-neutral-900  text-green-500 text-lg'>
                     Sign in
@@ -85,8 +87,6 @@ function OathCheck({ page }) {
                                     :
                                     <>Sign in</>
                             }
-
-
                         </button>
                     </DialogFooter>
                 </DialogContent>

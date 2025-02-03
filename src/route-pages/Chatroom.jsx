@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '@/database/dbconfig';
 import io from "socket.io-client";
+import OathCheck from '@/components/custom/OathCheck';
 
 
 const socket = io("http://localhost:3000");
@@ -22,7 +23,6 @@ function Chatroom() {
     const [groupName, setGroupName] = useState("");
     const [message, setMessage] = useState("");
     const [chat, setChat] = useState([]);
-    const [joined, setJoined] = useState(false);
   
     const joinGroup = () => {
       setGroupName(group?.type)
@@ -44,7 +44,7 @@ function Chatroom() {
         setChat((prev) => [...prev, data]);
       });
       return () => socket.off("receiveMessage");
-    }, []);
+    });
 
   const getGroupInfo = async () => {
     const docRef = doc(db, "GroupInfo", group?.type);
@@ -61,7 +61,7 @@ function Chatroom() {
     }
     getItinerary();
   }
-
+ 
   const getItinerary = async()=> {
     const docRef = doc(db, "ActiveTrips", user?.email);
     const docSnap = await getDoc(docRef);
@@ -77,13 +77,16 @@ function Chatroom() {
     }
   }
 
-
-
-
-
-
   return (
-    <div className='height w-full grid grid-cols-6 grid-rows-6 gap-8 p-8 font-baloo'>
+    (!user)
+
+      ? <OathCheck page={'Group Collaboration'} />
+
+      : 
+
+      (group)
+
+      ? <div className='height w-full grid grid-cols-6 grid-rows-6 gap-8 p-8 font-baloo'>
       <div className='col-span-4 row-span-6 rounded-xl border-[2px] border-neutral-500 p-4 flex flex-col bg-neutral-400 shadow-lg shadow-black'>
 
         <p className='text-center text-xl pb-4 font-extrabold'>
@@ -148,6 +151,9 @@ function Chatroom() {
         </div>
       </div>
     </div>
+    :
+    <div className='height w-full flex text-lg font-extrabold opacity-75 items-center justify-center font-baloo'>You are not a part of any active group</div>
+    
   )
 }
 

@@ -145,7 +145,7 @@ function Preview() {
                 {/* Listing places for main tourist attraction */}
                 <div className='flex items-start justify-center flex-col gap-4 w-full pt-6 pb-4 border-b-4 border-neutral-300'>
                   <p className='text-2xl font-extrabold'>Tourist Attractions 🎡</p>
-                  <div className='grid grid-cols-3 gap-24'>
+                  <div className='grid grid-cols-3 gap-24 w-full'>
                     {detail?.touristAttractions.map((item, index) => {
                       return <TopPlace place={item} dest={detail} key={index} />
                     })}
@@ -155,7 +155,7 @@ function Preview() {
                 {/* Listing most famous restaurants */}
                 <div className='flex items-start justify-center flex-col gap-4 w-full pt-6 pb-4 border-b-4 border-neutral-300'>
                   <p className='text-2xl font-extrabold'>Famous Restaurants 🥡</p>
-                  <div className='grid grid-cols-3 gap-24'>
+                  <div className='grid grid-cols-3 gap-24 w-full'>
                     {detail?.restaurants.map((item, index) => {
                       return <Restaurant place={item} dest={detail} key={index} />
                     })}
@@ -165,7 +165,7 @@ function Preview() {
                 {/* Listing hotels with good hospitality */}
                 <div className='flex items-start justify-center flex-col gap-4 w-full pt-6'>
                   <p className='text-2xl font-extrabold'>Top Hotels 🏨</p>
-                  <div className='grid grid-cols-3 gap-24'>
+                  <div className='grid grid-cols-3 gap-24 w-full'>
                     {detail?.hotels.map((item, index) => {
                       return <HotelCard place={item} dest={detail} key={index} />
                     })}

@@ -21,33 +21,25 @@ function Archive() {
     querySnapShot.forEach((doc) => {
       console.log(doc.id, " ==> ", doc.data());
       setTripCollection((prevData) => [...prevData, doc.data()]);
-    })
+    });
   }
 
   return (
     <div>
       {
         (user) ?
-           (tripCollection) ?
-            <div className='height py-12 px-40 font-baloo'>
-
-              <p className='font-extrabold text-4xl mb-8'>Generated Itinerary History 🕒</p>
-
-              <div className='grid grid-cols-3 gap-8 my-8'>
-                {
-                  tripCollection.map((item, index) => {
-                    return <HistoryCard trip={item} key={index} />
-                  })
-                }
-              </div>
-
+          <div className='height py-12 px-40 font-baloo'>
+            <p className='font-extrabold text-4xl mb-8'>Generated Itinerary History 🕒</p>
+            <div className='grid grid-cols-3 gap-8 my-8'>
+              {
+                tripCollection.map((item, index) => {
+                  return <HistoryCard trip={item} key={index} />
+                })
+              }
             </div>
-            : 
-            <div>
-              no trop dajxvkahclskjcb
-            </div>
-      :<OathCheck page="History Tracker" />
-    }
+          </div>
+          : <OathCheck page="History Tracker" />
+      }
     </div>
   )
 }

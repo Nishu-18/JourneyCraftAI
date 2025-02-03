@@ -1,24 +1,65 @@
-# JourneyCraftAI
+# JourneyCraft AI
 
-***
-install and run python
+## Overview
+JourneyCraft AI is an AI-powered itinerary planner designed to simplify group travel planning. It provides real-time collaboration, personalized recommendations, and integrated booking to create seamless travel experiences.
 
-cd ai_integration
+## Features
+- **AI-Powered Itinerary Planner**: Generates optimized travel itineraries based on user preferences.
+- **Real-Time Group Collaboration**: Allows multiple users to edit and manage itineraries together.
+- **Destination Insights & Previews**: Provides detailed information about destinations, including attractions and local tips.
+- **Booking Integration**: Enables direct booking of hotels, transport, and activities.
+- **Chatbot Assistance**: Offers real-time travel support and suggestions.
 
+## Installation
+
+### 1. Clone the Repository
+```sh
+git clone https://github.com/Nishu-18/JourneyCraftAI.git
+cd JourneyCraft-AI
+```
+
+### 2. Set Up AI Model
+```sh
+cd ai_integrattion
 pip install -r requirements.txt
-
 python app.py
+```
 
-
-***
-open new terminal
-
-npm i
-
+### 3. Start the Backend Server
+_Open a new terminal and run:_
+```sh
+npm install
 node server/index.js
+```
 
-
-***
-open ne ternimal
-
+### 4. Start the Frontend
+_Open another new terminal and run:_
+```sh
 npm run dev
+```
+
+## Tech Stack
+- **Frontend**: React, Tailwind CSS
+- **Backend**: Node.js, Express
+- **Database**: Firebase
+- **Real-Time Communication**: Socket.IO
+- **AI Model**: Python (Flask-based service)
+- **Maps & Location Services**: Google Maps API
+
+## Usage
+1. Open the application in the browser after running the frontend.
+2. Enter your trip details to generate an itinerary.
+3. Invite group members to collaborate in real-time.
+4. Explore destination insights and book travel arrangements.
+5. Use the chatbot for instant travel assistance.
+
+## Contributing
+Contributions are welcome! Please follow these steps:
+1. Fork the repository.
+2. Create a new branch (`feature-branch`).
+3. Commit your changes.
+4. Push to your branch and submit a pull request.
+
+## License
+This project is licensed under the MIT License.
+

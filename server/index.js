@@ -33,6 +33,7 @@ io.on("connection", (socket) => {
 
   socket.on("sendMessage", ({ groupName, userName, message }) => {
     io.to(groupName).emit("receiveMessage", { userName, message });
+    console.log(message)
   });
 
   socket.on("disconnect", () => {

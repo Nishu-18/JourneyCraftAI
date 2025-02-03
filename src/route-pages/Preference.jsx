@@ -53,6 +53,7 @@ function Preference() {
   const [fromDate, setFromDate] = useState();
   const [toDate, setToDate] = useState();
   const [genLoader, setGenLoader] = useState(false);
+  const [pushLoader, setPushLoader] = useState(false);
   const [formData, setFormData] = useState([]);
   const trip_route = useNavigate();
 
@@ -157,10 +158,9 @@ function Preference() {
       saveDB(jsonData); // Save the response to Firestore
     }
     catch (error) {
+      setGenLoader(false);
       console.error("Error generating itinerary:", error);
       toast("Error generating itinerary. Please try again later.");
-    } finally {
-      setGenLoader(false);
     }
   }
 
@@ -169,7 +169,7 @@ function Preference() {
   * @param {object} ai_response - The AI-generated itinerary data.
   */
   const saveDB = async (ai_response) => {
-
+    setPushLoader(true);
     try {
       const docId = Date.now().toString(); //Generate unique ID
 
@@ -185,6 +185,9 @@ function Preference() {
     } catch (error) {
       console.error("Error saving data to Firestore:", error);
       toast("Error saving trip data. Please try again.");
+    } finally {
+      setGenLoader(false);
+      setPushLoader(false);
     }
   };
 
@@ -404,10 +407,16 @@ function Preference() {
             {(genLoader) ?
 
               //Loader while generating
-              <div className='font-bold text-xl text-green-500 w-full flex items-center justify-center gap-4'>
-                <Loader2 className="animate-spin" />
-                <span className='text-neutral-900'>Please wait, our AI Model is generating the result</span>
-              </div>
+              <>
+                <div className='font-bold text-xl text-green-500 w-full flex items-center justify-center gap-4'>
+                  <Loader2 className="animate-spin" />
+                  <span className='text-neutral-900'>
+                    {(pushLoader)
+                      ? 'Saving itinerary to database'
+                      : 'Please wait, our AI Model is generating the result'}
+                  </span>
+                </div>
+              </>
 
               :
 

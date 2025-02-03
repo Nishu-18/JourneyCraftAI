@@ -123,34 +123,40 @@
 .h-link {
   @apply flex items-center justify-center relative px-2 h-full hover:text-green-500 transition-all duration-200;
 }
+
 .h-link::after {
   content: "";
   @apply absolute bottom-0 bg-green-500 rounded-full w-0 h-[3px] transition-all duration-200;
 }
+
 .active {
   @apply h-link font-medium text-green-500;
 }
+
 .active::after {
   @apply w-full;
 }
+
 .btn-link {
   @apply h-full px-4 border-[3px] border-green-700 rounded-full flex items-center justify-center gap-2 ml-4 font-medium hover:bg-green-700 hover:text-white transition-all duration-200;
 }
 
-.bg-image{
+.bg-image {
   height: calc(100vh - 56px);
-  background: linear-gradient(rgb(0,0,0,0.1), rgb(0,0,0,0.9)), url('./assets/bg.jpg');
+  background: linear-gradient(rgb(0, 0, 0, 0.1), rgb(0, 0, 0, 0.9)), url('./assets/bg.jpg');
   background-size: cover;
   background-position: center;
 }
+
 .img-shadow {
   filter: drop-shadow(0 0 9px rgba(0, 0, 0)) contrast(1.5) brightness(1.5);
 }
+
 .text-shadow {
   text-shadow: 0px 0px 9px black;
 }
 
-.scroll-hiding::-webkit-scrollbar{
+.scroll-hiding::-webkit-scrollbar {
   display: none;
 }
 
@@ -158,9 +164,9 @@
   height: calc(100vh - 56px);
 }
 
-/* .back-image{
+.back-image {
   background-image: url('/chat.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-} */
+}
